@@ -1,10 +1,15 @@
 form {
     width: auto;
 }
-
+.searchArea>div{
+    font-size: 18px;
+    text-align: left;
+    width: fit-content;
+    margin: 10px 0;
+}
 .searchInput {
-    padding: 6px 12px;
     vertical-align: middle;
+    margin-right: 20px;
 }
 
 .searchArea .btn {
@@ -12,7 +17,20 @@ form {
 }
 
 .searchArea {
-    text-align: center;
+    border: 1px solid lightgray;
+    padding: 20px;
+    max-width: 800px;
+    margin: 10px auto;
+    box-sizing: border-box;
+}
+
+.searchArea>div>span{
+    display: block;
+    margin: 10px 0 15px 0;
+}
+
+.searchArea input{
+    width: 150px;
 }
 
 #containerArea{
@@ -117,6 +135,10 @@ pre{
     vertical-align: bottom;
 }
 
+.insert{
+    margin-top: 30px;
+}
+
 .insert button{
     margin-top: 10px;
 }
@@ -146,7 +168,7 @@ pre{
 }
 
 .container .actionArea div {
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
 .hideSpan {
@@ -175,51 +197,51 @@ pre{
 }
 
 /* pagination */
-.paginationBlock {
-    text-align: right;
-}
+// .paginationBlock {
+//     text-align: right;
+// }
 
 .pagination {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    font-size: 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
 }
 
-.pagination>li {
-    display: inline-block;
-}
+// .pagination>li {
+//     display: inline-block;
+// }
 
-.pagination>li>a {
-    display: inline-block;
-    text-decoration: none;
-    border: 1px solid #dee2e6;
-    border-right: 0;
-    text-align: center;
-    padding: 10px 15px;
-    font-size: 18px;
-    color: #6DB9EF;
-}
+// .pagination>li>a {
+//     /* display: inline-block;
+//     text-decoration: none;
+//     border: 1px solid #dee2e6;
+//     border-right: 0;
+//     text-align: center;
+//     padding: 10px 15px;
+//     font-size: 18px; */
+//     color: #6DB9EF;
+// }
 
-.pagination>li:last-child>a {
-    border-right: 1px solid #dee2e6;
-    border-radius: 0 5px 5px 0;
-}
+// .pagination>li:last-child>a {
+//     border-right: 1px solid #dee2e6;
+//     border-radius: 0 5px 5px 0;
+// }
 
-.pagination>li:first-child>a {
-    display: inline-block;
-    border-radius: 5px 0 0 5px;
-}
+// .pagination>li:first-child>a {
+//     display: inline-block;
+//     border-radius: 5px 0 0 5px;
+// }
 
-.pagination>li>a.on {
-    background-color: #e9ecef;
-    color: #0056b3;
-}
+// .pagination>li>a.on {
+//     background-color: #e9ecef;
+//     color: #0056b3;
+// }
 
-.pagination>li>a:hover {
-    background-color: #e9ecef;
-    color: #0056b3;
-}
+// .pagination>li>a:hover {
+//     background-color: #e9ecef;
+//     color: #0056b3;
+// }
 
 /* update.php */
 .update .avatar{
@@ -236,6 +258,11 @@ pre{
 }
 
 @media screen and (max-width: 768px){
+    .searchInput {
+        display: block;
+        margin-bottom: 10px;
+    }
+
     .msgContainer .avatar{
         text-align: justify;
     }

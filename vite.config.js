@@ -1,11 +1,31 @@
+import path from 'path';
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: [
+                'resources/sass/app.scss',
+                'resources/js/app.js',
+            ],
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+            '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+        }
+    },
+    build: {
+        rollupOptions: {
+            output: {
+                dir: 'public/build/assets/',
+                entryFileNames: 'app.js',
+                assetFileNames: 'app.css',
+                chunkFileNames: 'app.js',
+                manualChunks: undefined,
+            }
+        }
+    }
 });
