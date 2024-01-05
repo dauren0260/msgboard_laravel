@@ -13,8 +13,8 @@
                 <textarea name="content" id="content" cols="80" rows="15">{{$message->comment}}</textarea>
             </div>
             <div class="actionArea"> 
-                <a href="/message" class="btn btnSecondary">取消</a>
-                <button type="submit" value="send" class="btn btnPrimary">送出</button>
+                <a href="{{ URL::previous() }}" class="btn btn-outline-secondary">取消</a>
+                <button type="submit" value="send" class="btn btn-outline-primary">送出</button>
             </div>
         </form>
     

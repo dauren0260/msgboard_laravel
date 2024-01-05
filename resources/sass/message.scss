@@ -1,6 +1,10 @@
 form {
     width: auto;
 }
+
+.container-sm{
+    max-width: 800px;
+}
 .searchArea>div{
     font-size: 18px;
     text-align: left;
@@ -39,53 +43,6 @@ form {
     margin: 0 auto;
 }
 
-.container {
-    margin: 10px auto;
-    max-width: 800px;
-    width: auto;
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 1.5px solid lightgray;
-    padding-bottom: 20px;
-}
-
-.container.hide {
-    display: none;
-}
-
-.container>div {
-    padding: 0 20px;
-}
-
-.popular {
-    text-align: center;
-}
-
-.popular span {
-    margin: 5px 0px;
-    display: inline-block;
-}
-
-.popular i {
-    font-size: 18px;
-}
-
-.popular i:hover {
-    cursor: pointer;
-    color: #0d6efd;
-}
-
-.avatar {
-    display: inline-block;
-    width: 50px;
-    vertical-align: middle;
-}
-
-.avatar img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
 
 .commentAvatar {
     vertical-align: top;
@@ -98,15 +55,14 @@ form {
     padding-left: 10px;
 }
 
+.actionArea{
+    min-width: 80px;
+}
+
 .msgContent {
     margin-top: 10px;
 }
 
-pre{
-    white-space:pre-line;
-    font-size: 16px;
-    margin: 0;
-}
 
 .msgContainer {
     display: flex;
@@ -123,16 +79,16 @@ pre{
     display: block;
 }
 
-.msgContainer textarea {
+.form-control{
     width: 500px;
     height: 150px;
     vertical-align: bottom;
     font-size: 18px;
-    resize: none;
+    // resize: none;
 }
 
-.msgContainer .btnPrimary {
-    vertical-align: bottom;
+.form-floating > .form-control{
+    height: 150px;
 }
 
 .insert{
@@ -143,11 +99,6 @@ pre{
     margin-top: 10px;
 }
 
-.btnSecondary,
-.btnWarning {
-    display: inline-block;
-    text-decoration: none;
-}
 
 .showContent {
     display: block;
@@ -196,53 +147,6 @@ pre{
     display: none;
 }
 
-/* pagination */
-// .paginationBlock {
-//     text-align: right;
-// }
-
-.pagination {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    width: max-content;
-}
-
-// .pagination>li {
-//     display: inline-block;
-// }
-
-// .pagination>li>a {
-//     /* display: inline-block;
-//     text-decoration: none;
-//     border: 1px solid #dee2e6;
-//     border-right: 0;
-//     text-align: center;
-//     padding: 10px 15px;
-//     font-size: 18px; */
-//     color: #6DB9EF;
-// }
-
-// .pagination>li:last-child>a {
-//     border-right: 1px solid #dee2e6;
-//     border-radius: 0 5px 5px 0;
-// }
-
-// .pagination>li:first-child>a {
-//     display: inline-block;
-//     border-radius: 5px 0 0 5px;
-// }
-
-// .pagination>li>a.on {
-//     background-color: #e9ecef;
-//     color: #0056b3;
-// }
-
-// .pagination>li>a:hover {
-//     background-color: #e9ecef;
-//     color: #0056b3;
-// }
-
 /* update.php */
 .update .avatar{
     width: 80px;
@@ -270,20 +174,17 @@ pre{
 
     .textArea{
         width: 350px;
-        margin-top: 10px;
     }
     
     .msgContainer textarea {
-        width: 300px;
+            width: 300px;
+        margin-top: 10px;
         height: 150px;
-
     }
 }
 
 @media screen and (max-width: 390px){
-    .paginationBlock {
-        text-align: center;
-    }
+ 
     .commentAvata{
         margin-right: 0;
     }

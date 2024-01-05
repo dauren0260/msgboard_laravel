@@ -1,13 +1,12 @@
 import './bootstrap';
-import '../sass/app.scss';
+import * as bootstrap from 'bootstrap';
+
 import moment from 'moment';
-let today = moment().format("YYYY-MM-DD");
-endDate.setAttribute("max",today);
+
 
 
 function dropData(e) {
     if(confirm("確認刪除留言?")){
-        // window.location.href = this.getAttribute('href');
         return true;
     }else{
         e.preventDefault();
@@ -19,4 +18,12 @@ window.onload = function(){
     for (let i = 0; i < allDelBtn.length; i++) {
         allDelBtn[i].addEventListener("click",dropData,false);
     }
+
+    let today = moment().format("YYYY-MM-DD");
+
+    let endDate = document.getElementById("endDate");
+    if(document.body.contains(endDate)){
+        endDate.setAttribute("max",today);
+    }
+    
 }

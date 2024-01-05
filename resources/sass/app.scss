@@ -5,7 +5,10 @@
 @import 'variables';
 
 // Bootstrap
-@import 'node_modules/bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
+@import '~~bootstrap/font/bootstrap-icons.scss';
 
 @import 'index.scss';
 @import 'message.scss';
+
+
