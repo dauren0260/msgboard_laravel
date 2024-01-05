@@ -25,5 +25,10 @@ window.onload = function(){
     if(document.body.contains(endDate)){
         endDate.setAttribute("max",today);
     }
-    
+
+    let toast = document.getElementsByClassName("toast")[0];
+    if(document.body.contains(toast)){
+       return new bootstrap.Toast(toast).show();
+    }
+
 }

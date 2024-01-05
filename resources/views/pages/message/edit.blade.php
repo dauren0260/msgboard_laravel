@@ -10,7 +10,7 @@
                     <img src="/img/avatar/{{$message->memAvatar}}" alt="avatar" />
                     <div class="username">{{$message->memName}}</div>
                 </div>
-                <textarea name="content" id="content" cols="80" rows="15">{{$message->comment}}</textarea>
+                <textarea name="comment" id="content" cols="80" rows="15">{{$message->comment}}</textarea>
             </div>
             <div class="actionArea"> 
                 <a href="{{ URL::previous() }}" class="btn btn-outline-secondary">取消</a>
