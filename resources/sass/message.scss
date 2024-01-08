@@ -84,7 +84,6 @@ form {
     height: 150px;
     vertical-align: bottom;
     font-size: 18px;
-    // resize: none;
 }
 
 .form-floating > .form-control{
@@ -99,53 +98,20 @@ form {
     margin-top: 10px;
 }
 
-
-.showContent {
-    display: block;
-}
-
-.hideContent {
-    display: none;
-}
-
 .container .contentArea {
     flex-grow: 1;
     width: 80%;
 }
 
 
-.container .actionArea.hide {
+.container-sm .actionArea.hide {
     display: none;
 }
 
-.container .actionArea div {
+.container-sm .actionArea div {
     margin: 10px 0;
 }
 
-.hideSpan {
-    display: none;
-}
-
-.hideSpan.show {
-    display: inline-block;
-}
-
-.showmore,
-.hidemore {
-    display: inline-block;
-    color: #065fd4;
-    margin-top: 5px;
-}
-
-.showmore:hover,
-.hidemore:hover {
-    cursor: pointer;
-}
-
-.showmore.hide,
-.hidemore.hide {
-    display: none;
-}
 
 /* update.php */
 .update .avatar{

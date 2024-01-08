@@ -2,7 +2,7 @@
     @extends("layouts.index")
     @section("messageContent")
 
-    @if (\Session::has('status'))
+    @if (\Session::has("status"))
     <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
@@ -10,7 +10,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-                {!! \Session::get('status') !!}
+                {!! \Session::get("status") !!}
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
    
     @forelse($lists as $list)
     <div class="container-sm d-flex justify-content-md-around mb-3 pb-3 align-items-center border-bottom border-secondary-subtle">
-        <div class="me-auto" id="contentArea{{$list->commentNo}}">
+        <div class="me-auto">
             <div class="avatar">
                 <img src="{{asset('img/avatar/'.$list->memAvatar)}}" alt="avatar">
             </div>
@@ -37,7 +37,7 @@
                 <div class="memberName">{{$list->memName}}</div>
                 <div class="commentTime">{{$list->commentTime}}</div>
             </div>
-            <div class="msgContent showContent" id="msgContent{{$list->commentNo}}">
+            <div class="msgContent showContent">
                 {!! nl2br(e($list->comment)) !!}
             </div>
         </div>
@@ -55,7 +55,7 @@
     </div>
     @empty
     <div class="container-sm">
-            Ooops...沒有符合的筆數
+            Ooops..沒有符合的筆數
     </div>
     @endforelse
 
