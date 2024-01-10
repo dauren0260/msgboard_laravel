@@ -79,14 +79,10 @@ form {
     display: block;
 }
 
-.form-control{
+.msgContainer .form-floating > .form-control{
     width: 500px;
-    height: 150px;
-    vertical-align: bottom;
     font-size: 18px;
-}
-
-.form-floating > .form-control{
+    vertical-align: bottom;
     height: 150px;
 }
 

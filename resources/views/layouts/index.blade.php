@@ -10,6 +10,12 @@
     @include("includes.header")
 
     <div>
+        @yield("loginIndex")
+    </div>
+    <div>
+        @yield("signupIndex")
+    </div>
+    <div>
         @yield("messageContent")
     </div>
     <div>
