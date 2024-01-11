@@ -3,14 +3,26 @@ import * as bootstrap from 'bootstrap';
 
 import moment from 'moment';
 
-
-
 function dropData(e) {
     if(confirm("確認刪除留言?")){
         return true;
     }else{
         e.preventDefault();
     }
+}
+
+function changePswBtn(){
+    showChangePsw.addEventListener("click",function(){
+        this.classList.toggle("hide");
+        changeArea.classList.toggle("hide");
+        oldPsw.value = '';
+        newPsw.value = '';
+    },false)
+
+    cancelBtn.addEventListener("click",function(){
+        changeArea.classList.toggle("hide");
+        showChangePsw.classList.toggle("hide");
+    },false)
 }
 
 window.onload = function(){
@@ -29,6 +41,11 @@ window.onload = function(){
     let toast = document.getElementsByClassName("toast")[0];
     if(document.body.contains(toast)){
        return new bootstrap.Toast(toast).show();
+    }
+
+    let changePsw = document.querySelector(".changePsw");
+    if(document.body.contains(changePsw)){
+        changePswBtn()
     }
 
 }

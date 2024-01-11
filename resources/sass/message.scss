@@ -68,6 +68,10 @@ form {
     display: flex;
     justify-content: center;
     margin-top: 50px;
+
+    img{
+        margin-bottom: 5px;
+    }
 }
 
 .msgContainer .avatar{
@@ -134,12 +138,8 @@ form {
     }
 
 
-    .textArea{
+    .msgContainer .form-floating > .form-control{
         width: 350px;
-    }
-    
-    .msgContainer textarea {
-            width: 300px;
         margin-top: 10px;
         height: 150px;
     }

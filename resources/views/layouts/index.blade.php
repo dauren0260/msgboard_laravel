@@ -21,5 +21,8 @@
     <div>
         @yield("editContent")
     </div>
+    <div class="memberCenter">
+        @yield("memberCenter")
+    </div>
 </body>
 </html>

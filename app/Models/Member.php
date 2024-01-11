@@ -18,6 +18,9 @@ class Member extends Authenticatable
     protected $hidden = ['memPassword'];
     protected $casts = ['memPassword' => 'hashed'];
 
+    public function getAuthPassword() {
+        return $this->memPassword;
+    }
     // public static function checkLogin($post)
     // {
     //     try{

@@ -2,6 +2,15 @@
     @extends("layouts.index")
     @section("messageContent")
 
+    @guest
+    <div class="card">
+        <div class="card-body">
+            <i class="bi bi-door-open"></i>
+            登入以查看留言版
+        </div>
+    </div>
+    @endguest
+    @auth
     @if (\Session::has("status"))
     <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -41,6 +50,7 @@
                 {!! nl2br(e($list->comment)) !!}
             </div>
         </div>
+        @if(Auth::user()->id == $list->id)
         <div class="actionArea">
             <div class="edit mb-3">
                 <a href="/message/{{$list->commentNo}}/edit"
@@ -52,10 +62,15 @@
                 <button type="submit" class="btn btn-outline-danger delBtn">刪除</button>
             </form>
         </div>
+        @endif
     </div>
     @empty
-    <div class="container-sm">
+    
+    <div class="card">
+        <div class="card-body">
+            <i class="bi bi-question-diamond"></i>
             Ooops..沒有符合的筆數
+        </div>
     </div>
     @endforelse
 
@@ -65,8 +80,8 @@
         @csrf
         <div class="msgContainer">
             <div class="flex-shrink-1 avatar commentAvatar">
-                <img src="./img/avatar/dorami.png" alt="avatar">
-                <div class="username">哆啦美</div>
+                <img src="./img/avatar/{{Auth::user()->memAvatar}}" alt="avatar">
+                <div class="username">{{Auth::user()->memName}}</div>
             </div>
             <div class="form-floating">
                 <textarea class="form-control" name="comment" id="floatingTextarea" required></textarea>
@@ -75,4 +90,5 @@
             </div>
         </div>
     </form>
+    @endauth
 @endsection
