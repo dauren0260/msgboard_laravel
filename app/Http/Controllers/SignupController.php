@@ -18,7 +18,7 @@ class SignupController extends Controller{
             $request->all(),
             [
                 "memEmail" => ["bail","required","email","unique:member"],
-                "memPassword" => ["required","confirmed",Password::min(8)->mixedCase()->numbers()->uncompromised()],
+                "memPassword" => ["required","confirmed",Password::min(8)->mixedCase()->numbers()],
                 "memPassword_confirmation" => ["required",Password::min(8)],
                 "memName"=>["required"]
             ]

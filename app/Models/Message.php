@@ -10,39 +10,38 @@ class Message extends Model
     use HasFactory;
     protected $table = "message";
     protected $primaryKey = "commentNo";
-    public $timestamps = false;
     
-    public static function list($gets){        
+    public static function list($query){        
         $messageList = DB::table("message as g")
-        ->join("member as m", "g.memberId","=","m.id")
-        ->select("m.id","m.memName","m.memAvatar","g.commentNo","g.comment","g.commentTime");
+        ->select("m.id","m.memName","m.memAvatar","g.commentNo","g.comment","g.updated_at")
+        ->join("member as m", "g.memberId","=","m.id");
 
-        if(isset($gets["author"]) && ($gets["author"] != ''))
+        if( isset($query["author"]) && ($query["author"] != '') )
         {
-            $messageList->where("m.memName","like","%{$gets['author']}%");
+            $messageList->where("m.memName","like","%{$query['author']}%");
         }
-        if(isset($gets["content"]) && ($gets["content"] != ''))
+        if( isset($query["content"]) && ($query["content"] != '') )
         {
-            $messageList->where("g.comment","like","%{$gets['content']}%");
+            $messageList->where("g.comment","like","%{$query['content']}%");
         }
-        if(isset($gets["startDate"]) && ($gets["startDate"] != ''))
+        if( isset($query["startDate"]) && ($query["startDate"] != '') )
         {
-            $messageList->whereDate("g.commentTime",">=","{$gets['startDate']}");
+            $messageList->whereDate("g.updated_at",">=","{$query['startDate']}");
         }
-        if(isset($gets["endDate"]) && ($gets["endDate"] != ''))
+        if( isset($query["endDate"]) && ($query["endDate"] != '') )
         {
-            $messageList->whereDate("g.commentTime","<=","{$gets['endDate']}");
+            $messageList->whereDate("g.updated_at","<=","{$query['endDate']}");
         }
 
-        $list = $messageList->orderBy("g.commentTime","desc")->paginate(5);
-
+        $list = $messageList->orderBy("g.updated_at","desc")->paginate(5);
+   
         return $list;
     }
     public static function showEditMsg($commentNo)
     {
         $message = DB::table("message as g")
+        ->select("m.id","m.memName","m.memAvatar","g.commentNo","g.comment","g.updated_at")
         ->join("member as m", "g.memberId","=","m.id")
-        ->select("m.id","m.memName","m.memAvatar","g.commentNo","g.comment","g.commentTime")
         ->where("g.commentNo","=", $commentNo)
         ->first();
 

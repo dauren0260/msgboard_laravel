@@ -1,4 +1,3 @@
-import './bootstrap';
 import * as bootstrap from 'bootstrap';
 
 import moment from 'moment';
@@ -13,19 +12,23 @@ function dropData(e) {
 
 function changePswBtn(){
     showChangePsw.addEventListener("click",function(){
+        console.log("changePswBtn");
+
         this.classList.toggle("hide");
         changeArea.classList.toggle("hide");
-        oldPsw.value = '';
-        newPsw.value = '';
-    },false)
+        oldPassword.value = '';
+        newPassword.value = '';
+        oldPassword.focus();
+    },false);
 
     cancelBtn.addEventListener("click",function(){
         changeArea.classList.toggle("hide");
         showChangePsw.classList.toggle("hide");
-    },false)
+    },false);
 }
 
 window.onload = function(){
+    console.log("onload");
     var allDelBtn = document.querySelectorAll(".delBtn");
     for (let i = 0; i < allDelBtn.length; i++) {
         allDelBtn[i].addEventListener("click",dropData,false);
@@ -38,14 +41,13 @@ window.onload = function(){
         endDate.setAttribute("max",today);
     }
 
-    let toast = document.getElementsByClassName("toast")[0];
-    if(document.body.contains(toast)){
-       return new bootstrap.Toast(toast).show();
-    }
-
     let changePsw = document.querySelector(".changePsw");
     if(document.body.contains(changePsw)){
-        changePswBtn()
+        changePswBtn();
     }
 
+    let toast = document.getElementsByClassName("toast")[0];
+    if(document.body.contains(toast)){
+       new bootstrap.Toast(toast).show();
+    }
 }

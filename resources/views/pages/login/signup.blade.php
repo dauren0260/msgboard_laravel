@@ -10,7 +10,6 @@
   <div class="form-group mt-3">
     <label for="email">Email</label>
     <input type="email" class="form-control" id="email" name="memEmail" placeholder="輸入email">
-    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group mt-3">
     <label for="password">密碼</label>

@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Message;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 class MessageController extends Controller
 {
     public function index(Request $request)
     {
-        $gets = $request->query();
-        $lists = Message::list($gets);
+        $query = $request->query();
+        $list = Message::list($query);
         
-        return view("pages/message/index", compact("lists","gets"));
+        return view("pages/message/index", compact("list","query"));
     }
     public function store(Request $request)
     {
@@ -38,7 +37,6 @@ class MessageController extends Controller
     {
             $message = Message::find($commentNo);
             $message->comment = $request->comment;
-            $message->commentTime = Carbon::now();
             $message->update();
             return redirect("/message");
     }
@@ -46,7 +44,7 @@ class MessageController extends Controller
     public function destroy($commentNo)
     {
         $message = Message::find($commentNo);
-        if(Auth::id()==$message->id){
+        if(Auth::id()==$message->memberId){
             $message->delete();
             return redirect()->back()->with("status","刪除留言成功");
         }else{
