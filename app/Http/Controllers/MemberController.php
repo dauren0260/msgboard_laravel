@@ -16,7 +16,12 @@ class MemberController extends Controller
         return view("pages/member/index");
     }
 
-    public function update(Request $request)
+    public function changePassword()
+    {
+        return view("pages/member/changePassword");
+    }
+
+    public function changePasswordUpdate(Request $request)
     {
         Validator::make(
             $request->all(),
@@ -30,12 +35,12 @@ class MemberController extends Controller
         $auth = Auth::user();
         if(!Hash::check($request->input("oldPassword"), $auth->memPassword))
         {
-            return back()->withErrors(["password"=>"輸入密碼錯誤"]);
+            return withErrors(["password"=>"輸入密碼錯誤"]);
         }
 
         if($request->input("oldPassword")==$request->input("newPassword"))
         {
-            return back()->withErrors(["password"=>"新密碼不可以舊密碼一致"]);
+            return withErrors(["password"=>"新密碼不可以舊密碼一致"]);
         }
 
         if($request->input("newPassword")==$request->input("newPassword_confirmation"))
@@ -43,7 +48,7 @@ class MemberController extends Controller
             $user = Member::find($auth->id);
             $user->memPassword = Hash::make($request->input("newPassword"));
             $user->update();
-            return redirect("memberCenter")->with("status","修改密碼成功!");
+            return redirect("/memberCenter")->with("status","修改密碼成功!");
         }
     }
 }

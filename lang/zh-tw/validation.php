@@ -189,6 +189,10 @@ return [
         'memPassword' => "密碼",
         'memPassword_confirmation' => "確認密碼",
         'memName' => "姓名",
+        'oldPassword' => "舊密碼",
+        'newPassword' => "新密碼",
+        'newPassword_confirmation' => "確認密碼",
+
     ],
 
 ];

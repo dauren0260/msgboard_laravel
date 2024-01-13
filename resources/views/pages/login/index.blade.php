@@ -19,6 +19,6 @@
     <a href="/signup" class="btn btn-outline-danger">註冊</a>
   </div>
 </form>
-@include("includes.errorNotice")
+@include("includes.noticeToast")
     
 @endsection

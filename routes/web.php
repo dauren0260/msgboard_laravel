@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\MemberController;
 
-Route::get("/", [MessageController::class,"index"]);
+Route::get("/", [MessageController::class,"index"])->middleware('auth');
 Route::resource("/message", MessageController::class)->middleware('auth');
 
 Route::get("login",[LoginController::class,"index"])->name("login");
@@ -17,4 +17,7 @@ Route::post("signup",[SignupController::class,"store"]);
 
 
 Route::get("memberCenter",[MemberController::class,"index"])->middleware('auth');
-Route::patch("memberCenter",[MemberController::class,"update"])->middleware('auth');
+// Route::patch("memberCenter",[MemberController::class,"update"])->middleware('auth');
+
+Route::get("changePassword",[MemberController::class,"changePassword"])->middleware('auth');
+Route::patch("changePassword",[MemberController::class,"changePasswordUpdate"])->middleware('auth');

@@ -4,7 +4,7 @@
 <div class="title">留言版 - 編輯留言</div>    
 <form action="/message/{{$message->commentNo}}" method="post" class="update">
     @csrf
-    @method("PUT")
+    @method("PATCH")
     <div class="msgContainer">
         <div class="avatar commentAvatar">
             <img src="/img/avatar/{{$message->memAvatar}}" alt="avatar" />

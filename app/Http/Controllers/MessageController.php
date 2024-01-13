@@ -26,7 +26,7 @@ class MessageController extends Controller
     public function edit($commentNo)
     {
         $message = Message::showEditMsg($commentNo);
-        if(Auth::id()==$message->id){
+        if( !is_null($message) && ( Auth::id() == $message->id )){
             return view("pages/message/edit", compact("message"));
         }else{
             return redirect("/message")->with("status","僅能編輯自己的留言!");
@@ -44,7 +44,7 @@ class MessageController extends Controller
     public function destroy($commentNo)
     {
         $message = Message::find($commentNo);
-        if(Auth::id()==$message->memberId){
+        if( !is_null($message) &&  ( Auth::id() == $message->memberId )){
             $message->delete();
             return redirect()->back()->with("status","刪除留言成功");
         }else{

@@ -11,7 +11,7 @@
     </div>
     @endguest
     @auth
-    @include("includes.errorNotice")
+    @include("includes.noticeToast")
     <form action="/message" class="searchArea" method="get">
         <div>搜尋留言</div>
         作者：<input type="text" name="author" class="searchInput" value="{{ $query['author'] ?? '' }}">
@@ -24,32 +24,33 @@
     </form>
    
     @forelse($list as $row)
-    <div class="container-sm d-flex justify-content-md-around mb-3 pb-3 align-items-center border-bottom border-secondary-subtle">
-        <div class="me-auto">
-            <div class="avatar">
-                <img src="{{ asset('img/avatar/'.$row->memAvatar) }}" alt="avatar">
+    <div class="container-sm d-flex justify-content-md-between mb-3 pb-3 align-items-center border-bottom border-secondary-subtle">
+            <div class="flex-grow-1">
+                <div class="avatar">
+                    <img src="{{ asset('img/avatar/'.$row->memAvatar) }}" alt="avatar">
+                </div>
+                <div class="memContent">
+                    <div>{{ $row->memName }}</div> 
+                    <div>{{ $row->updated_at }}</div>
+                </div>
+                <div class="mt-3">
+                    {!! nl2br( e($row->comment) ) !!}
+                </div>
             </div>
-            <div class="memContent">
-                <div class="memberName">{{ $row->memName }}</div> 
-                <div class="commentTime">{{ $row->updated_at }}</div>
+            @if(Auth::user()->id == $row->id)
+            <div class="actionArea">
+                <div class="edit mb-3">
+                    <a href="/message/{{ $row->commentNo }}/edit"
+                        class="btn btn-outline-primary" role="button">編輯</a>
+                </div>
+                <form action="/message/{{ $row->commentNo }}" method="post" class="delete">
+                    @csrf
+                    @method("delete")
+                    <button type="submit" class="btn btn-outline-danger delBtn">刪除</button>
+                </form>
             </div>
-            <div class="msgContent showContent">
-                {!! nl2br( e($row->comment) ) !!}
-            </div>
-        </div>
-        @if(Auth::user()->id == $row->id)
-        <div class="actionArea">
-            <div class="edit mb-3">
-                <a href="/message/{{ $row->commentNo }}/edit"
-                    class="btn btn-outline-primary" role="button">編輯</a>
-            </div>
-            <form action="/message/{{ $row->commentNo }}" method="post" class="delete">
-                @csrf
-                @method("delete")
-                <button type="submit" class="btn btn-outline-danger delBtn">刪除</button>
-            </form>
-        </div>
-        @endif
+            @endif
+        
     </div>
     @empty
     

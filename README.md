@@ -1,9 +1,9 @@
 ### 1/12 修改 <br>
 下載blade套件  <br>
 
-修改密碼頁面：失敗後留下 新密碼與舊密碼的Input  <br>
+[x] 修改密碼頁面：失敗後留下 新密碼與舊密碼的Input  <br>
 
-update edit 沒有留言編號也要阻擋(不存在isset)  <br>
+[x] update edit 沒有留言編號也要阻擋(不存在isset)  <br>
 
 
 ---

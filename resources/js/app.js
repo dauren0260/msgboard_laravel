@@ -10,25 +10,7 @@ function dropData(e) {
     }
 }
 
-function changePswBtn(){
-    showChangePsw.addEventListener("click",function(){
-        console.log("changePswBtn");
-
-        this.classList.toggle("hide");
-        changeArea.classList.toggle("hide");
-        oldPassword.value = '';
-        newPassword.value = '';
-        oldPassword.focus();
-    },false);
-
-    cancelBtn.addEventListener("click",function(){
-        changeArea.classList.toggle("hide");
-        showChangePsw.classList.toggle("hide");
-    },false);
-}
-
 window.onload = function(){
-    console.log("onload");
     var allDelBtn = document.querySelectorAll(".delBtn");
     for (let i = 0; i < allDelBtn.length; i++) {
         allDelBtn[i].addEventListener("click",dropData,false);
@@ -39,11 +21,6 @@ window.onload = function(){
     let endDate = document.getElementById("endDate");
     if(document.body.contains(endDate)){
         endDate.setAttribute("max",today);
-    }
-
-    let changePsw = document.querySelector(".changePsw");
-    if(document.body.contains(changePsw)){
-        changePswBtn();
     }
 
     let toast = document.getElementsByClassName("toast")[0];

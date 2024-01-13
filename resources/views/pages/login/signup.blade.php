@@ -3,7 +3,7 @@
 
 <div class="title">會員註冊</div>
 
-@include("includes.errorNotice")
+@include("includes.noticeToast")
 
 <form action="/signup" method="post" id="signupForm" class="col-md-4">
     @csrf
