@@ -25,6 +25,19 @@ window.onload = function(){
 
     let toast = document.getElementsByClassName("toast")[0];
     if(document.body.contains(toast)){
-       new bootstrap.Toast(toast).show();
+        new bootstrap.Toast(toast).show();
+    }
+    
+    let fileTag = document.getElementById("fileTag");
+    if(document.body.contains(fileTag)){
+        fileTag.addEventListener("change",(event) => {
+            const [file] = event.target.files;
+            console.log(file)
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.addEventListener("load", (event) => {
+                preview.setAttribute("src", event.target.result);
+            });
+        })
     }
 }

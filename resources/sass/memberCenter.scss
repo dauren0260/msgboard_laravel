@@ -30,3 +30,40 @@
 .changePsw input{
     margin: 10px 0;
 }
+
+// upload
+.fileInputArea span{
+    font-size: 12px;
+}
+
+[for="fileTag"] {
+    padding: 6px 10px;
+    background-color: $primary;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+}
+
+#fileTag {
+    display: none;
+}
+
+.uploadArea{
+    text-align: center;
+    border: 1px dotted;
+    padding: 15px;
+
+    img{
+        width: 150px;
+    }
+}
+
+.memberCenter .fa-regular{
+    position: relative;
+    left: 85%;
+    top: -29px;
+    color: #6DB9EF;
+    cursor: pointer;
+}

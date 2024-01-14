@@ -17,7 +17,7 @@ Route::post("signup",[SignupController::class,"store"]);
 
 
 Route::get("memberCenter",[MemberController::class,"index"])->middleware('auth');
-// Route::patch("memberCenter",[MemberController::class,"update"])->middleware('auth');
+Route::post("memberCenter",[MemberController::class,"update"])->middleware('auth');
 
 Route::get("changePassword",[MemberController::class,"changePassword"])->middleware('auth');
 Route::patch("changePassword",[MemberController::class,"changePasswordUpdate"])->middleware('auth');

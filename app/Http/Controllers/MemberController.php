@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\Rules\File;
 use App\Models\Member;
 
 class MemberController extends Controller
@@ -14,6 +15,24 @@ class MemberController extends Controller
     public function index()
     {
         return view("pages/member/index");
+    }
+
+    public function update(Request $request)
+    {
+        $auth = Auth::user();
+        $arr = array($request->file("photo"));
+
+        Validator::validate($arr,[
+            "photo" => [
+                "required",
+                File::image()
+                ->max("2mb")
+            ]
+        ]);
+        
+        $filename = avatar.$auth->id;
+        $request->photo->storeAs("public/img/avatar/",$filename);
+        return redirect("/memberCenter")->with("status","上傳成功!");
     }
 
     public function changePassword()
