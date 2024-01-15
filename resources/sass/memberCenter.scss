@@ -16,7 +16,7 @@
 
 .memberCenter .container{
     width: 200px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 .memberCenter .container div{
@@ -58,6 +58,14 @@
     img{
         width: 150px;
     }
+
+    button{
+        vertical-align: bottom;
+    }
+}
+
+.uploadArea.hide{
+    display: none;
 }
 
 .memberCenter .fa-regular{

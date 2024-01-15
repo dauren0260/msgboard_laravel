@@ -57,6 +57,7 @@ form {
 
 .actionArea{
     min-width: 80px;
+    text-align: right;
 }
 
 .msgContainer {
@@ -96,6 +97,14 @@ form {
 .container .contentArea {
     flex-grow: 1;
     width: 80%;
+}
+
+/* edit */
+.editSection{
+    textarea{
+        width: 350px;
+        height: 200px;
+    }
 }
 
 /* update.php */

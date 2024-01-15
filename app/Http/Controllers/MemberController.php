@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
-use Illuminate\Validation\Rules\File;
 use App\Models\Member;
 
 class MemberController extends Controller
@@ -20,18 +21,23 @@ class MemberController extends Controller
     public function update(Request $request)
     {
         $auth = Auth::user();
-        $arr = array($request->file("photo"));
 
-        Validator::validate($arr,[
-            "photo" => [
-                "required",
-                File::image()
-                ->max("2mb")
-            ]
+        $request->validate([
+            "avatar" => ["required","mimes:jpeg,jpg,png","max:2048"]
         ]);
+        $extension = $request->file('avatar')->extension();
+
+        // 照片格式不同，且不是預設照片，才刪除照片
+        if(!Str::contains($auth->memAvatar, $extension) && ($auth->memAvatar != "memDefault.png")){
+            $this->destroy();
+        }
+
+        $filename = "avatar$auth->id.$extension";
+        $request->avatar->storeAs("/img/avatar/",$filename);
+        $member = Member::find($auth->id);
+        $member->memAvatar = $filename;
+        $member->save();
         
-        $filename = avatar.$auth->id;
-        $request->photo->storeAs("public/img/avatar/",$filename);
         return redirect("/memberCenter")->with("status","上傳成功!");
     }
 
@@ -50,16 +56,16 @@ class MemberController extends Controller
                 "newPassword_confirmation" => ["required",Password::min(8)],
             ]
         )->validate();
-
         $auth = Auth::user();
+
         if(!Hash::check($request->input("oldPassword"), $auth->memPassword))
         {
-            return withErrors(["password"=>"輸入密碼錯誤"]);
+            return back()->withErrors(["password"=>"輸入密碼錯誤"]);
         }
 
         if($request->input("oldPassword")==$request->input("newPassword"))
         {
-            return withErrors(["password"=>"新密碼不可以舊密碼一致"]);
+            return back()->withErrors(["password"=>"新密碼不可以舊密碼一致"]);
         }
 
         if($request->input("newPassword")==$request->input("newPassword_confirmation"))
@@ -69,5 +75,11 @@ class MemberController extends Controller
             $user->update();
             return redirect("/memberCenter")->with("status","修改密碼成功!");
         }
+    }
+
+    public function destroy()
+    {
+        $auth = Auth::user();
+        Storage::delete("img/avatar/$auth->memAvatar");
     }
 }

@@ -152,7 +152,7 @@ return [
     'string' => 'The :attribute field must be a string.',
     'timezone' => 'The :attribute field must be a valid timezone.',
     'unique' => ':attribute已被使用',
-    'uploaded' => 'The :attribute failed to upload.',
+    'uploaded' => ':attribute上傳失敗',
     'uppercase' => 'The :attribute field must be uppercase.',
     'url' => 'The :attribute field must be a valid URL.',
     'ulid' => 'The :attribute field must be a valid ULID.',
@@ -185,14 +185,14 @@ return [
     */
 
     'attributes' => [
-        'memEmail' => "信箱",
-        'memPassword' => "密碼",
-        'memPassword_confirmation' => "確認密碼",
-        'memName' => "姓名",
-        'oldPassword' => "舊密碼",
-        'newPassword' => "新密碼",
-        'newPassword_confirmation' => "確認密碼",
-
+        "memEmail" => "信箱",
+        "memPassword" => "密碼",
+        "memPassword_confirmation" => "確認密碼",
+        "memName" => "姓名",
+        "oldPassword" => "舊密碼",
+        "newPassword" => "新密碼",
+        "newPassword_confirmation" => "確認密碼",
+        "avatar" => "檔案"
     ],
 
 ];

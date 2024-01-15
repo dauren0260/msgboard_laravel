@@ -28,16 +28,35 @@ window.onload = function(){
         new bootstrap.Toast(toast).show();
     }
     
+    // 檔案上傳
     let fileTag = document.getElementById("fileTag");
+    let uploadArea = document.getElementsByClassName("uploadArea")[0];
+    let delPreview = document.getElementsByClassName("delPreview")[0];
+
     if(document.body.contains(fileTag)){
         fileTag.addEventListener("change",(event) => {
             const [file] = event.target.files;
-            console.log(file)
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.addEventListener("load", (event) => {
-                preview.setAttribute("src", event.target.result);
-            });
+            const imgFileReg = /\.(jpe?g|png)$/i;
+            
+            if(imgFileReg.test(file.name)){
+                uploadArea.classList.remove("hide");
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.addEventListener("load", (event) => {
+                    preview.setAttribute("src", event.target.result);
+                });
+            }else{
+                alert("檔案格式錯誤");
+            }
         })
+    }
+
+    if(document.body.contains(delPreview)){
+        delPreview.addEventListener("click",function(){
+            preview.setAttribute("src", "");
+            uploadArea.classList.add("hide");
+            console.log(uploadArea)
+            fileTag.value = "";
+        },false);
     }
 }

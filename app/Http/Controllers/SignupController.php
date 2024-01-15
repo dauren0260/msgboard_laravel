@@ -26,8 +26,7 @@ class SignupController extends Controller{
 
         $registerInfo = $request->merge(["memPassword"=>Hash::make($request->memPassword)])->all();
         Member::create($registerInfo);
-
-        return view("pages/login/index");
+        return redirect("login")->with("status","註冊成功");
     }
 }
 

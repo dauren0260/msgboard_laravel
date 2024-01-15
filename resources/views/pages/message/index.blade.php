@@ -27,7 +27,7 @@
     <div class="container-sm d-flex justify-content-md-between mb-3 pb-3 align-items-center border-bottom border-secondary-subtle">
             <div class="flex-grow-1">
                 <div class="avatar">
-                    <img src="{{ asset('img/avatar/'.$row->memAvatar) }}" alt="avatar">
+                    <img src="{{ asset('storage/img/avatar/'.$row->memAvatar) }}" alt="avatar">
                 </div>
                 <div class="memContent">
                     <div>{{ $row->memName }}</div> 
@@ -68,7 +68,7 @@
         @csrf
         <div class="msgContainer">
             <div class="flex-shrink-1 avatar commentAvatar">
-                <img src="./img/avatar/{{ Auth::user()->memAvatar }}" alt="avatar">
+                <img src="{{asset('storage/img/avatar/'.Auth::user()->memAvatar)}}" alt="avatar">
                 <div class="username">{{ Auth::user()->memName }}</div>
             </div>
             <div class="form-floating">

@@ -20,7 +20,7 @@
     <div>
         @yield("messageContent")
     </div>
-    <div>
+    <div class="editSection">
         @yield("editContent")
     </div>
     <div class="memberCenter">

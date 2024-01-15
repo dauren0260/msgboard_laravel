@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class="avatar">
-        <img src="./img/avatar/{{Auth::user()->memAvatar}}" alt="avatar">
+        <img src="{{asset('storage/img/avatar/'.Auth::user()->memAvatar)}}" alt="avatar">
     </div>
     <form action="/memberCenter" method="post" enctype="multipart/form-data">
     @csrf
@@ -11,9 +11,9 @@
             <div class="fileInputArea">
                 <label for="fileTag">上傳檔案</label>
                 <span>檔案大小需小於2MB</span>
-                <input type="file" name="photo" id="fileTag" />
+                <input type="file" name="avatar" id="fileTag" required/>
             </div>
-            <div class="uploadArea">
+            <div class="uploadArea hide">
                 預覽圖片
                 <img src="" alt="preview" id="preview" />
                 <div class="btnArea">

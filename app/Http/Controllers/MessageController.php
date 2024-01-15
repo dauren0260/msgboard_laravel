@@ -9,10 +9,14 @@ class MessageController extends Controller
 {
     public function index(Request $request)
     {
+        $view = "pages/message/index";
+        $model = array();
         $query = $request->query();
         $list = Message::list($query);
+        $model["list"] = $list;
+        $model["query"] = $query;
         
-        return view("pages/message/index", compact("list","query"));
+        return view($view, $model);
     }
     public function store(Request $request)
     {
@@ -25,9 +29,13 @@ class MessageController extends Controller
 
     public function edit($commentNo)
     {
+        $view = "pages/message/edit";
+        $model = array();
         $message = Message::showEditMsg($commentNo);
-        if( !is_null($message) && ( Auth::id() == $message->id )){
-            return view("pages/message/edit", compact("message"));
+        $model["message"] = $message;
+        
+        if( !is_null($message) && ( Auth::id() == $message->id )){ 
+                return view($view, $model);
         }else{
             return redirect("/message")->with("status","僅能編輯自己的留言!");
         }
