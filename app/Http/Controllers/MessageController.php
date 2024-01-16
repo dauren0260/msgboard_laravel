@@ -18,6 +18,10 @@ class MessageController extends Controller
         
         return view($view, $model);
     }
+    public function create()
+    {
+
+    }
     public function store(Request $request)
     {
         $Message =new Message;
@@ -25,6 +29,11 @@ class MessageController extends Controller
         $Message->comment = $request->comment;
         $Message->save();
         return redirect("/message")->with("status","添加留言成功");
+    }
+
+    public function show()
+    {
+
     }
 
     public function edit($commentNo)

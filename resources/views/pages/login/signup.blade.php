@@ -1,4 +1,5 @@
 @extends("layouts/index")
+@section("title","註冊")
 @section("signupIndex")
 
 <div class="title">會員註冊</div>

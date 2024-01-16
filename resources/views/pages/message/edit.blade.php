@@ -1,4 +1,5 @@
 @extends("layouts/index")
+@section("title","留言版 | 編輯留言")
 @section("editContent")
  
 <div class="title">留言版 - 編輯留言</div>    

@@ -1,5 +1,6 @@
 .memberCenter .avatar{
     text-align: center;
+    width: auto;
 }
 
 .memberCenter .avatar .btnPrimary{
@@ -29,6 +30,18 @@
 
 .changePsw input{
     margin: 10px 0;
+}
+.form-group{
+    position: relative;
+}
+.bi-eye,
+.bi-eye-slash{
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    color: $primary;
+    font-size: 18px;
+    cursor: pointer;
 }
 
 // upload

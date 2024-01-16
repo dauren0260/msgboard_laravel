@@ -41,6 +41,12 @@ class MemberController extends Controller
         return redirect("/memberCenter")->with("status","上傳成功!");
     }
 
+    public function destroy()
+    {
+        $auth = Auth::user();
+        Storage::delete("img/avatar/$auth->memAvatar");
+    }
+
     public function changePassword()
     {
         return view("pages/member/changePassword");
@@ -76,10 +82,5 @@ class MemberController extends Controller
             return redirect("/memberCenter")->with("status","修改密碼成功!");
         }
     }
-
-    public function destroy()
-    {
-        $auth = Auth::user();
-        Storage::delete("img/avatar/$auth->memAvatar");
-    }
+    
 }

@@ -1,4 +1,5 @@
 @extends("layouts.index")
+@section("title","會員中心")
 @section("memberCenter")
 
 <div class="container">
@@ -28,4 +29,7 @@
     <a class="btn btn-outline-secondary" href="/changePassword">更改密碼</a>
 </div>
 @include("includes.noticeToast")
+@push("preview")
+    @vite(["resources/js/filePreview.js"])
+@endpush   
 @endsection

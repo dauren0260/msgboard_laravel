@@ -11,7 +11,6 @@ class LoginController extends Controller{
     }
     public function authenticate(Request $request)
     {
-
         $credentials = $request->validate([
             "memEmail" => ["required","email"],
             "memPassword" => ["required"]
@@ -20,7 +19,7 @@ class LoginController extends Controller{
         if($credentials){
             $arr = array("memEmail"=> $request->memEmail, "password" => $request->memPassword);
             
-            if(Auth::attempt($arr,false)){
+            if(Auth::attempt($arr)){
                 $request->session()->regenerate();
                 return redirect()->intended('message');
             }
@@ -37,4 +36,3 @@ class LoginController extends Controller{
         return redirect("/login");
     }
 }
-?>

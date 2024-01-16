@@ -30,4 +30,3 @@ class SignupController extends Controller{
     }
 }
 
-?>

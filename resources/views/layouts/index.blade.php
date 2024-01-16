@@ -6,7 +6,7 @@
     @vite(['resources/sass/app.scss','resources/js/app.js'])
     <!-- <link rel="stylesheet" href="{{asset('build/app3.css')}}"> -->
     <!-- <script src="{{asset('build/app2.js')}}"></script> -->
-    <title>留言版</title>
+    <title>@yield("title","留言版")</title>
 </head>
 <body>
     @include("includes.header")
@@ -26,5 +26,8 @@
     <div class="memberCenter">
         @yield("memberCenter")
     </div>
+
+    @stack("password")
+    @stack("preview")
 </body>
 </html>
