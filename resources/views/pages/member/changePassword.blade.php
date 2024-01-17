@@ -1,6 +1,7 @@
 @extends("layouts.index")
 @section("title","會員中心 | 修改密碼")
-@section("memberCenter")
+@section("content")
+<div class="memberCenter">
 <form action="changePassword" method="post" class="container">
     @csrf
     @method("PATCH")
@@ -26,6 +27,6 @@
 @push("password")
     @vite(["resources/js/eyeIcon.js"])
 @endpush
-
+</div>
 @endsection
 

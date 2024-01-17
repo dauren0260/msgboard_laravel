@@ -2,7 +2,7 @@
 @extends("layouts.index")
 @section("title","留言版")
     
-@section("messageContent")
+@section("content")
 
     @guest
     <div class="card">

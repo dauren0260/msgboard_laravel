@@ -1,7 +1,7 @@
 @extends("layouts.index")
 @section("title","會員中心")
-@section("memberCenter")
-
+@section("content")
+<div class="memberCenter">
 <div class="container">
     <div class="avatar">
         <img src="{{asset('storage/img/avatar/'.Auth::user()->memAvatar)}}" alt="avatar">
@@ -32,4 +32,5 @@
 @push("preview")
     @vite(["resources/js/filePreview.js"])
 @endpush   
+</div>
 @endsection

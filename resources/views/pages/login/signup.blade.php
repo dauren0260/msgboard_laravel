@@ -1,6 +1,6 @@
 @extends("layouts/index")
 @section("title","註冊")
-@section("signupIndex")
+@section("content")
 
 <div class="title">會員註冊</div>
 
@@ -14,12 +14,12 @@
   </div>
   <div class="form-group mt-3">
     <label for="password">密碼</label>
-    <input type="password" class="form-control" id="password" name="memPassword" placeholder="Password">
+    <input type="password" class="form-control" id="password" name="memPassword" placeholder="Password"><i class="bi bi-eye"></i>
   </div>
 
   <div class="form-group mt-3">
     <label for="password">確認密碼</label>
-    <input type="password" class="form-control" id="passwordConfirm" name="memPassword_confirmation" placeholder="Password">
+    <input type="password" class="form-control" id="passwordConfirm" name="memPassword_confirmation" placeholder="Password"><i class="bi bi-eye"></i>
   </div>
   <div class="form-group mt-3">
     <label for="memberName">名字</label>
@@ -30,4 +30,7 @@
       <a href="/login" class="btn btn-outline-secondary">返回登入</a>
   </div>
 </form>
+@push("password")
+    @vite(["resources/js/eyeIcon.js"])
+@endpush   
 @endsection

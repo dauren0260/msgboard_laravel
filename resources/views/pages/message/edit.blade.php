@@ -1,7 +1,8 @@
 @extends("layouts/index")
 @section("title","留言版 | 編輯留言")
-@section("editContent")
- 
+@section("content")
+
+<div class="editSection">
 <div class="title">留言版 - 編輯留言</div>    
 <form action="/message/{{$message->commentNo}}" method="post" class="update">
     @csrf
@@ -15,8 +16,8 @@
     </div>
     <div class="actionArea"> 
         <a href="{{ URL::previous() }}" class="btn btn-outline-secondary">取消</a>
-        <button type="submit" value="send" class="btn btn-outline-primary">送出</button>
+        <button type="submit" class="btn btn-outline-primary">送出</button>
     </div>
 </form>
-    
+</div>
 @endsection

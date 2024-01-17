@@ -11,7 +11,9 @@ class MessageController extends Controller
     {
         $view = "pages/message/index";
         $model = array();
-        $query = $request->query();
+        // $query = $request->query();
+        $query = $request->only(["author","content","startDate","endDate"]);
+
         $list = Message::list($query);
         $model["list"] = $list;
         $model["query"] = $query;
@@ -43,8 +45,8 @@ class MessageController extends Controller
         $message = Message::showEditMsg($commentNo);
         $model["message"] = $message;
         
-        if( !is_null($message) && ( Auth::id() == $message->id )){ 
-                return view($view, $model);
+        if($this->isValid($message)){
+            return view($view, $model);
         }else{
             return redirect("/message")->with("status","僅能編輯自己的留言!");
         }
@@ -52,20 +54,30 @@ class MessageController extends Controller
 
     public function update(Request $request,  $commentNo)
     {
-            $message = Message::find($commentNo);
+        $message = Message::find($commentNo);
+
+        if($this->isValid($message)){
             $message->comment = $request->comment;
             $message->update();
             return redirect("/message");
+        }else{
+            return redirect("/message")->with("status","僅能編輯自己的留言!");
+        }
     }
 
     public function destroy($commentNo)
     {
         $message = Message::find($commentNo);
-        if( !is_null($message) &&  ( Auth::id() == $message->memberId )){
+        if($this->isValid($message)){
             $message->delete();
             return redirect()->back()->with("status","刪除留言成功");
         }else{
             return redirect()->back()->with("status","刪除失敗! 僅能刪除自己的留言");
         }
+    }
+
+    public function isValid($message)
+    {
+        return !is_null($message) && ( Auth::id() == $message->id );
     }
 }

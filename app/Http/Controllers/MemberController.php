@@ -32,7 +32,7 @@ class MemberController extends Controller
             $this->destroy();
         }
 
-        $filename = "avatar$auth->id.$extension";
+        $filename = "avatar" . $auth->id . "." .$extension;
         $request->avatar->storeAs("/img/avatar/",$filename);
         $member = Member::find($auth->id);
         $member->memAvatar = $filename;
@@ -44,7 +44,7 @@ class MemberController extends Controller
     public function destroy()
     {
         $auth = Auth::user();
-        Storage::delete("img/avatar/$auth->memAvatar");
+        Storage::delete("img/avatar/".$auth->memAvatar);
     }
 
     public function changePassword()
@@ -54,6 +54,12 @@ class MemberController extends Controller
 
     public function changePasswordUpdate(Request $request)
     {
+        $auth = Auth::user();
+        if(!Hash::check($request->input("oldPassword"), $auth->memPassword))
+        {
+            return back()->withErrors(["password"=>"輸入密碼錯誤"]);
+        }
+
         Validator::make(
             $request->all(),
             [
@@ -62,25 +68,17 @@ class MemberController extends Controller
                 "newPassword_confirmation" => ["required",Password::min(8)],
             ]
         )->validate();
-        $auth = Auth::user();
 
-        if(!Hash::check($request->input("oldPassword"), $auth->memPassword))
-        {
-            return back()->withErrors(["password"=>"輸入密碼錯誤"]);
-        }
+        
 
         if($request->input("oldPassword")==$request->input("newPassword"))
         {
             return back()->withErrors(["password"=>"新密碼不可以舊密碼一致"]);
         }
 
-        if($request->input("newPassword")==$request->input("newPassword_confirmation"))
-        {
-            $user = Member::find($auth->id);
-            $user->memPassword = Hash::make($request->input("newPassword"));
-            $user->update();
-            return redirect("/memberCenter")->with("status","修改密碼成功!");
-        }
+        $user = Member::find($auth->id);
+        $user->memPassword = Hash::make($request->input("newPassword"));
+        $user->update();
+        return redirect("/memberCenter")->with("status","修改密碼成功!");
     }
-    
 }

@@ -1,6 +1,6 @@
 @extends("layouts/index")
 @section("title","登入")
-@section("loginIndex")
+@section("content")
 <div class="title">會員登入</div>
 
 <form action="/login" method="post" id="loginForm" class="col-md-4 col-sm-4 mb-5">
