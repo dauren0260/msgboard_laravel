@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
-use App\Models\Member;
 class SignupController extends Controller{
 
     public function create()
@@ -17,16 +17,15 @@ class SignupController extends Controller{
         Validator::make(
             $request->all(),
             [
-                "memEmail" => ["bail","required","email","unique:member"],
-                "memPassword" => ["required","confirmed",Password::min(8)->mixedCase()->numbers()],
-                "memPassword_confirmation" => ["required",Password::min(8)],
-                "memName"=>["required"]
+                "email" => ["bail","required","email","unique:user"],
+                "password" => ["required","confirmed",Password::min(8)->mixedCase()->numbers()],
+                "password_confirmation" => ["required",Password::min(8)],
+                "name"=> ["required"]
             ]
         )->validate();
 
-        $registerInfo = $request->merge(["memPassword"=>Hash::make($request->memPassword)])->all();
-        Member::create($registerInfo);
+        $registerInfo = $request->merge(["password"=>Hash::make($request->password)])->all();
+        User::create($registerInfo);
         return redirect("login")->with("status","註冊成功");
     }
 }
-

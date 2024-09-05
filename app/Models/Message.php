@@ -9,16 +9,15 @@ class Message extends Model
 {
     use HasFactory;
     protected $table = "message";
-    protected $primaryKey = "commentNo";
     
     public static function list($query){        
         $messageList = DB::table("message as g")
-        ->select("m.id","m.memName","m.memAvatar","g.commentNo","g.comment","g.updated_at")
-        ->join("member as m", "g.memberId","=","m.id");
+        ->select("m.id","m.name","m.avatar","g.id","g.comment","g.updated_at")
+        ->join("user as m", "g.user_id","=","m.id");
 
         if( isset($query["author"]) && ($query["author"] != "") )
         {
-            $messageList->where("m.memName","like","%{$query['author']}%");
+            $messageList->where("m.name","like","%{$query['author']}%");
         }
         if( isset($query["content"]) && ($query["content"] != "") )
         {
@@ -37,12 +36,12 @@ class Message extends Model
    
         return $list;
     }
-    public static function showEditMsg($commentNo)
+    public static function showEditMsg($id)
     {
         $message = DB::table("message as g")
-        ->select("m.id","m.memName","m.memAvatar","g.commentNo","g.comment","g.updated_at")
-        ->join("member as m", "g.memberId","=","m.id")
-        ->where("g.commentNo","=", $commentNo)
+        ->select("m.id","m.name","m.avatar","g.id","g.comment","g.updated_at")
+        ->join("user as m", "g.user_id","=","m.id")
+        ->where("g.id","=", $id)
         ->first();
 
         return $message;

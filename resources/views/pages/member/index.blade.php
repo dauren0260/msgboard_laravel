@@ -4,9 +4,9 @@
 <div class="memberCenter">
 <div class="container">
     <div class="avatar">
-        <img src="{{asset('storage/img/avatar/'.Auth::user()->memAvatar)}}" alt="avatar">
+        <img src="{{asset('storage/img/avatar/'.Auth::user()->avatar)}}" alt="avatar">
     </div>
-    <form action="/memberCenter" method="post" enctype="multipart/form-data">
+    <form action="/avatar" method="post" enctype="multipart/form-data">
     @csrf
         <div>
             <div class="fileInputArea">
@@ -24,8 +24,8 @@
             </div>
         </div>
     </form>
-    <div>姓名：{{Auth::user()->memName}}</div>
-    <div>信箱：{{Auth::user()->memEmail}}</div>
+    <div>姓名：{{Auth::user()->name}}</div>
+    <div>信箱：{{Auth::user()->email}}</div>
     <a class="btn btn-outline-secondary" href="/changePassword">更改密碼</a>
 </div>
 @include("includes.noticeToast")

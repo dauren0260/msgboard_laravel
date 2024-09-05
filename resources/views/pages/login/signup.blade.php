@@ -10,20 +10,20 @@
     @csrf
   <div class="form-group mt-3">
     <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" name="memEmail" placeholder="輸入email">
+    <input type="email" class="form-control" id="email" name="email" placeholder="輸入email">
   </div>
   <div class="form-group mt-3">
     <label for="password">密碼</label>
-    <input type="password" class="form-control" id="password" name="memPassword" placeholder="Password"><i class="bi bi-eye"></i>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password"><i class="bi bi-eye"></i>
   </div>
 
   <div class="form-group mt-3">
     <label for="password">確認密碼</label>
-    <input type="password" class="form-control" id="passwordConfirm" name="memPassword_confirmation" placeholder="Password"><i class="bi bi-eye"></i>
+    <input type="password" class="form-control" id="passwordConfirm" name="password_confirmation" placeholder="Password"><i class="bi bi-eye"></i>
   </div>
   <div class="form-group mt-3">
     <label for="memberName">名字</label>
-    <input type="text" class="form-control" id="memberName"  name="memName" placeholder="Password">
+    <input type="text" class="form-control" id="memberName"  name="name" placeholder="Password">
   </div>
   <div class="mt-3">
       <button type="submit" class="btn btn-primary">送出</button>

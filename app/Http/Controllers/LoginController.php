@@ -12,17 +12,14 @@ class LoginController extends Controller{
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            "memEmail" => ["required","email"],
-            "memPassword" => ["required"]
+            "email" => ["required","email"],
+            "password" => ["required"]
         ]);
         
-        if($credentials){
-            $arr = array("memEmail"=> $request->memEmail, "password" => $request->memPassword);
             
-            if(Auth::attempt($arr)){
-                $request->session()->regenerate();
-                return redirect()->intended('message');
-            }
+        if(Auth::attempt($credentials)){
+            $request->session()->regenerate();
+            return redirect()->intended('message');
         }
 
         return back()->withErrors(["login"=>"帳號或密碼錯誤"]);

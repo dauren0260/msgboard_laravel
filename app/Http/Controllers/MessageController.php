@@ -11,7 +11,6 @@ class MessageController extends Controller
     {
         $view = "pages/message/index";
         $model = array();
-        // $query = $request->query();
         $query = $request->only(["author","content","startDate","endDate"]);
 
         $list = Message::list($query);
@@ -27,7 +26,7 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         $Message =new Message;
-        $Message->memberId = Auth::id();
+        $Message->user_id = Auth::id();
         $Message->comment = $request->comment;
         $Message->save();
         return redirect("/message")->with("status","添加留言成功");
@@ -38,11 +37,11 @@ class MessageController extends Controller
 
     }
 
-    public function edit($commentNo)
+    public function edit($id)
     {
         $view = "pages/message/edit";
         $model = array();
-        $message = Message::showEditMsg($commentNo);
+        $message = Message::showEditMsg($id);
         $model["message"] = $message;
         
         if($this->isValid($message)){
@@ -52,9 +51,9 @@ class MessageController extends Controller
         }
     }
 
-    public function update(Request $request,  $commentNo)
+    public function update(Request $request,  $id)
     {
-        $message = Message::find($commentNo);
+        $message = Message::find($id);
 
         if($this->isValid($message)){
             $message->comment = $request->comment;
@@ -65,9 +64,9 @@ class MessageController extends Controller
         }
     }
 
-    public function destroy($commentNo)
+    public function destroy($id)
     {
-        $message = Message::find($commentNo);
+        $message = Message::find($id);
         if($this->isValid($message)){
             $message->delete();
             return redirect()->back()->with("status","刪除留言成功");

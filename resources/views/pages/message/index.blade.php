@@ -29,10 +29,10 @@
     <div class="container-sm d-flex justify-content-md-between mb-3 pb-3 align-items-center border-bottom border-secondary-subtle">
             <div class="flex-grow-1">
                 <div class="avatar">
-                    <img src="{{ asset('storage/img/avatar/'.$row->memAvatar) }}" alt="avatar">
+                    <img src="{{ asset('storage/img/avatar/'.$row->avatar) }}" alt="avatar">
                 </div>
                 <div class="memContent">
-                    <div>{{ $row->memName }}</div> 
+                    <div>{{ $row->name }}</div> 
                     <div>{{ $row->updated_at }}</div>
                 </div>
                 <div class="mt-3">
@@ -42,10 +42,10 @@
             @if(Auth::user()->id == $row->id)
             <div class="actionArea">
                 <div class="edit mb-3">
-                    <a href="/message/{{ $row->commentNo }}/edit"
+                    <a href="/message/{{ $row->id }}/edit"
                         class="btn btn-outline-primary" role="button">編輯</a>
                 </div>
-                <form action="/message/{{ $row->commentNo }}" method="post" class="delete">
+                <form action="/message/{{ $row->id }}" method="post" class="delete">
                     @csrf
                     @method("delete")
                     <button type="submit" class="btn btn-outline-danger delBtn">刪除</button>
@@ -70,8 +70,8 @@
         @csrf
         <div class="msgContainer">
             <div class="flex-shrink-1 avatar commentAvatar">
-                <img src="{{asset('storage/img/avatar/'.Auth::user()->memAvatar)}}" alt="avatar">
-                <div class="username">{{ Auth::user()->memName }}</div>
+                <img src="{{asset('storage/img/avatar/'.Auth::user()->avatar)}}" alt="avatar">
+                <div class="username">{{ Auth::user()->name }}</div>
             </div>
             <div class="form-floating">
                 <textarea class="form-control" name="comment" id="floatingTextarea" required></textarea>

@@ -8,10 +8,10 @@
 
 ---
 ### Laravel 疑問：  <br>
-password validator --uncompromised()  public data leak? 加強密碼強度?? 無作用?  <br>
-
-bootstrap: form-control @error('password') is-invalid @enderror" 作用?  <br>
-
 npm run build 無效 <br>
 
-why user model extends Authenticatable not model?  <br>
+### 啟動專案
+Step1. 切換至 feature/upload 分支  <br>
+
+Step2. 執行命令 ` php artisan migrate:fresh --seed `   <br>
+        可在資料庫快速產生所需資料表+假資料

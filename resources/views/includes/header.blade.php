@@ -4,7 +4,7 @@
     </a>
     @auth
     <div class="infoArea">
-        <a href="/memberCenter">Hello, {{Auth::user()->memName}}</a>
+        <a href="/user">Hello, {{Auth::user()->name}}</a>
         <a href="/logout" class="btn btn-outline-secondary">登出</a>
     </div>
     @else
