@@ -1,11 +1,11 @@
 ### 啟動專案
 
 **Step 0.** 電腦安裝Node (有安裝可略過) <br>
-[Node][1] <br>
-到官網下載，選擇v20.17.0(LTS)的版本，依執行檔安裝完，開啟終端機命令行輸入 ` node -v ` 確認是否安裝成功，npm也會一同安裝好<br>
-[1]: https://nodejs.org/zh-tw/download/prebuilt-installer
+<a href="https://nodejs.org/zh-tw/download/prebuilt-installer">Node</a><br>
+到官網下載，選擇v20.17.0(LTS)的版本，依執行檔安裝完， <br>
+開啟終端機命令行輸入 ` node -v ` 確認是否安裝成功，npm也會一同安裝好<br>
 
-若出現`'node'不是內部或外部...之類的訊息`，編輯電腦的環境變數，確認nodejs有無在path裡面<br>
+若出現`'node'不是內部或外部...之類的訊息`，可去編輯電腦的環境變數，確認nodejs有無在path裡面<br>
 
 **Step 1.** 切換至 feature/upload 分支  <br>
 
