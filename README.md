@@ -7,14 +7,14 @@
 
 若出現`'node'不是內部或外部...之類的訊息`，可去編輯電腦的環境變數，確認nodejs有無在path裡面<br>
 
-**Step 1.** 切換至 feature/upload 分支  <br>
+**Step 1.** 切換至 feature/upload 分支 !! <br>
 
 **Step 2.** ` composer install ` <br>
 
 **Step 3.** `npm install` <br>
  
 **Step 4.** `cp .env.example .env` <br>
-修改 database
+在自己本機的資料庫新增一個空的資料庫，並修改env的database
 ```
 ...
 DB_DATABASE=YourDatabase
@@ -31,3 +31,7 @@ DB_PASSWORD=YourPassword
 **Step 7.** `php artisan serve`  <br>
  
 確認樣式有無正常，沒有的話另開一個終端機跑 `npm run dev`  <br>
+
+**Step 8.** 測試帳號 <br>
+帳: dorami@gmail.com <br>
+密: Abcd1234 <br>
