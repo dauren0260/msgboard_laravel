@@ -24,7 +24,7 @@
 </form>
 @include("includes.noticeToast")
 
-@push("password")
+@push("main")
     @vite(["resources/js/eyeIcon.js"])
 @endpush
 </div>

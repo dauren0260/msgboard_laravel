@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/sass/app.scss','resources/js/app.js'])
     {{-- <link rel="stylesheet" href="{{asset('build/app3.css')}}">
-     <script src="{{asset('build/app2.js')}}"></script> 
-    --}}
+     <script src="{{asset('build/app2.js')}}"></script>  --}}
+   
     <title>@yield("title","留言版")</title>
 </head>
 <body>
@@ -16,7 +16,6 @@
         @yield("content")
     </div>
 
-    @stack("password")
-    @stack("preview")
+    @stack("main")
 </body>
 </html>

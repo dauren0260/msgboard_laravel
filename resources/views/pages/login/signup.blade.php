@@ -30,7 +30,7 @@
       <a href="/login" class="btn btn-outline-secondary">返回登入</a>
   </div>
 </form>
-@push("password")
+@push("main")
     @vite(["resources/js/eyeIcon.js"])
 @endpush   
 @endsection

@@ -29,7 +29,7 @@
     <a class="btn btn-outline-secondary" href="/changePassword">更改密碼</a>
 </div>
 @include("includes.noticeToast")
-@push("preview")
+@push("main")
     @vite(["resources/js/filePreview.js"])
 @endpush   
 </div>
