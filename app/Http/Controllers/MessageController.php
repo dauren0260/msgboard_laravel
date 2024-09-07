@@ -5,37 +5,31 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
+
 class MessageController extends Controller
 {
     public function index(Request $request)
     {
         $view = "pages/message/index";
         $model = array();
-        $query = $request->only(["author","content","startDate","endDate"]);
+        $query = $request->only(["author", "content", "startDate", "endDate"]);
 
         $list = Message::list($query);
         $model["list"] = $list;
         $model["query"] = $query;
-        
         return view($view, $model);
     }
-    public function create()
-    {
-
-    }
+    public function create() {}
     public function store(Request $request)
     {
-        $Message =new Message;
+        $Message = new Message;
         $Message->user_id = Auth::id();
         $Message->comment = $request->comment;
         $Message->save();
-        return redirect("/message")->with("status","添加留言成功");
+        return redirect("/message")->with("status", "添加留言成功");
     }
 
-    public function show()
-    {
-
-    }
+    public function show() {}
 
     public function edit($id)
     {
@@ -43,11 +37,11 @@ class MessageController extends Controller
         $model = array();
         $message = Message::showEditMsg($id);
         $model["message"] = $message;
-        
-        if($this->isValid($message)){
+
+        if ($this->isValid($message)) {
             return view($view, $model);
-        }else{
-            return redirect("/message")->with("status","僅能編輯自己的留言!");
+        } else {
+            return redirect("/message")->with("status", "僅能編輯自己的留言!");
         }
     }
 
@@ -55,28 +49,28 @@ class MessageController extends Controller
     {
         $message = Message::find($id);
 
-        if($this->isValid($message)){
+        if ($this->isValid($message)) {
             $message->comment = $request->comment;
             $message->update();
-            return redirect("/message");
-        }else{
-            return redirect("/message")->with("status","僅能編輯自己的留言!");
+            return redirect("/message")->with("status", "編輯留言成功");
+        } else {
+            return redirect("/message")->with("status", "僅能編輯自己的留言!");
         }
     }
 
     public function destroy($id)
     {
         $message = Message::find($id);
-        if($this->isValid($message)){
+        if ($this->isValid($message)) {
             $message->delete();
-            return redirect()->back()->with("status","刪除留言成功");
-        }else{
-            return redirect()->back()->with("status","刪除失敗! 僅能刪除自己的留言");
+            return redirect()->back()->with("status", "刪除留言成功");
+        } else {
+            return redirect()->back()->with("status", "刪除失敗! 僅能刪除自己的留言");
         }
     }
 
     public function isValid($message)
     {
-        return !is_null($message) && ( Auth::id() == $message->id );
+        return !is_null($message) && (Auth::id() == $message->user_id);
     }
 }

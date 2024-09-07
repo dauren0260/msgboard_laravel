@@ -4,7 +4,7 @@
 
 <div class="editSection">
 <div class="title">留言版 - 編輯留言</div>    
-<form action="/message/{{$message->id}}" method="post" class="update">
+<form action="/message/{{$message->message_id}}" method="post" class="update">
     @csrf
     @method("PATCH")
     <div class="msgContainer">

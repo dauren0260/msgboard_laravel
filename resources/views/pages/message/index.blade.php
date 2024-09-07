@@ -39,13 +39,13 @@
                     {!! nl2br( e($row->comment) ) !!}
                 </div>
             </div>
-            @if(Auth::user()->id == $row->id)
+            @if(Auth::user()->id == $row->user_id)
             <div class="actionArea">
                 <div class="edit mb-3">
-                    <a href="/message/{{ $row->id }}/edit"
+                    <a href="/message/{{ $row->message_id }}/edit"
                         class="btn btn-outline-primary" role="button">編輯</a>
                 </div>
-                <form action="/message/{{ $row->id }}" method="post" class="delete">
+                <form action="/message/{{ $row->message_id }}" method="post" class="delete">
                     @csrf
                     @method("delete")
                     <button type="submit" class="btn btn-outline-danger delBtn">刪除</button>
@@ -56,7 +56,7 @@
     </div>
     @empty
     
-    <div class="card">
+    <div class="col col-md-4 mx-auto card">
         <div class="card-body">
             <i class="bi bi-question-diamond"></i>
             Ooops..沒有符合的筆數
