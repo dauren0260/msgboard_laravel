@@ -15,7 +15,12 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view("pages/member/index");
+
+        $entries = 'resources/js/pages/filePreview.js';
+        $view = 'pages/member/index';
+        $model["entries"] = $entries;
+
+        return view($view, $model);
     }
 
     public function update(Request $request)
@@ -49,7 +54,11 @@ class UserController extends Controller
 
     public function changePassword()
     {
-        return view("pages/member/changePassword");
+        $entries = 'resources/js/pages/eyeIcon.js';
+        $view = 'pages/member/changePassword';
+        $model["entries"] = $entries;
+
+        return view($view, $model);
     }
 
     public function changePasswordUpdate(Request $request)

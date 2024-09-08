@@ -20,8 +20,8 @@
 </form>
 @include("includes.noticeToast")
 
-@push("main")
+{{-- @push("main")
     @vite(["resources/js/eyeIcon.js"])
-@endpush   
+@endpush    --}}
 
 @endsection

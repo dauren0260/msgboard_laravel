@@ -24,6 +24,11 @@
         </div>
         <button class="btn btn-outline-secondary">搜索</button>
     </form>
+    <div id="app">
+        msg: @{{ msg }}
+        can u See me??
+    </div>
+
    
     @forelse($list as $row)
     <div class="container-sm d-flex justify-content-md-between mb-3 pb-3 align-items-center border-bottom border-secondary-subtle">

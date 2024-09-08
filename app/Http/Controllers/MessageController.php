@@ -15,8 +15,13 @@ class MessageController extends Controller
         $query = $request->only(["author", "content", "startDate", "endDate"]);
 
         $list = Message::list($query);
+        $entries = 'resources/js/pages/index.js';
+        $prod = 'index.js';
+
         $model["list"] = $list;
         $model["query"] = $query;
+        $model["entries"] = $entries;
+        $model["prod"] = $prod;
         return view($view, $model);
     }
     public function create() {}
